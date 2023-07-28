@@ -9,15 +9,15 @@ function App() {
   const [sat, setSat] = useState(satData);
   const displaySats = [...new Set(satData.map((data) => data.orbitType))];
 
-  const filterByType = currentType => {
+  const filterByType = (currentType) => {
     const displaySats = satData.filter((newSatDisplay) => {
-      return newSatDisplay.orbitType === currentType;
+      return newSatDisplay.orbitType === currentType.sat;
     });
     setSat(displaySats);
   };
 
   return (
-    <div>
+    <>
       <Banner />
       <Buttons 
         filterByType={filterByType}
@@ -25,7 +25,7 @@ function App() {
         displaySats={displaySats}
       />
       <Table sat={sat}/>
-    </div>
+    </>
   );
 }
 
